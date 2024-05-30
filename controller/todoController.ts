@@ -5,9 +5,15 @@ import { http } from "../utils/enums";
 
 export const createTodo = async (req: Request, res: Response) => {
   try {
-    const { title } = req.body;
+    const { title, desc, priority, dueDate, date } = req.body;
 
-    const createTask = await todoModel.create({ title });
+    const createTask = await todoModel.create({
+      title,
+      desc,
+      priority,
+      dueDate,
+      date,
+    });
 
     return res.status(http.Created).json({
       message: "todo task created successfully",
@@ -63,6 +69,7 @@ export const moveTodoToProgress = async (req: Request, res: Response) => {
     });
   }
 };
+
 export const moveTodoToDone = async (req: Request, res: Response) => {
   try {
     const { ID } = req.params;
@@ -122,6 +129,7 @@ export const getAllCombine = async (req: Request, res: Response) => {
     const getAllProgress = getTask.filter((el: iProps) => {
       return el.progress === true && el.done === false;
     });
+
     const getAllDone = getTask.filter((el: iProps) => {
       return el.progress === true && el.done === true;
     });
@@ -144,18 +152,3 @@ export const getAllCombine = async (req: Request, res: Response) => {
     });
   }
 };
-
-// const todoModel = new Schema<iPropsData>(
-//   {
-//     todo: {
-//       type: [],
-//     },
-//     progress: {
-//       type: [],
-//     },
-//     done: {
-//       type: [],
-//     },
-//   },
-//   { timestamps: true }
-// );

@@ -8,7 +8,7 @@ import { mainApp } from "./mainApp";
 
 const mongoDBStore = mongoDB(session);
 const store = new mongoDBStore({
-  uri: process.env.MONGO_DB_URL_ONLINE!,
+  uri: process.env.MONGO_DB_URL!,
   collection: "sessions",
 });
 

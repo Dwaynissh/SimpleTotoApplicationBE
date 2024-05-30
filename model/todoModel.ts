@@ -2,15 +2,12 @@ import { Schema, Types, model } from "mongoose";
 
 export interface iProps {
   title: string;
+  desc: string;
+  priority: string;
+  dueDate: string;
   date: string;
   progress: boolean;
   done: boolean;
-}
-
-interface iData {
-  todo: iProps[];
-  progress: iProps[];
-  done: iProps[];
 }
 
 export interface iPropsData extends iProps, Document {}
@@ -18,6 +15,15 @@ export interface iPropsData extends iProps, Document {}
 const todoModel = new Schema<iPropsData>(
   {
     title: {
+      type: String,
+    },
+    desc: {
+      type: String,
+    },
+    priority: {
+      type: String,
+    },
+    dueDate: {
       type: String,
     },
     progress: {
@@ -32,20 +38,4 @@ const todoModel = new Schema<iPropsData>(
   },
   { timestamps: true }
 );
-// const todoModel = new Schema(
-//   {
-//     todo: {
-//       type: [],
-//     },
-//     progress: {
-//       type: [],
-//     },
-
-//     done: {
-//       type: [],
-//     },
-//   },
-//   { timestamps: true }
-// );
-
 export default model<iPropsData>("todo", todoModel);
