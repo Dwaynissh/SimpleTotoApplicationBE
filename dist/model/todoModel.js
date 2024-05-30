@@ -5,6 +5,15 @@ const todoModel = new mongoose_1.Schema({
     title: {
         type: String,
     },
+    desc: {
+        type: String,
+    },
+    priority: {
+        type: String,
+    },
+    dueDate: {
+        type: String,
+    },
     progress: {
         type: Boolean,
         default: false,
@@ -14,18 +23,4 @@ const todoModel = new mongoose_1.Schema({
         default: false,
     },
 }, { timestamps: true });
-// const todoModel = new Schema(
-//   {
-//     todo: {
-//       type: [],
-//     },
-//     progress: {
-//       type: [],
-//     },
-//     done: {
-//       type: [],
-//     },
-//   },
-//   { timestamps: true }
-// );
 exports.default = (0, mongoose_1.model)("todo", todoModel);

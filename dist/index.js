@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Content-Type");
     next();
 });
-app.use((0, cors_1.default)({ origin: process.env.APP_URL }));
+app.use((0, cors_1.default)({ origin: process.env.APP_URL_ONLINE }));
 app.use(express_1.default.json());
 app.use((0, express_session_1.default)({
     secret: process.env.SESSION_SECRET,

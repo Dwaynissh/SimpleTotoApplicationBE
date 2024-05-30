@@ -17,8 +17,14 @@ const todoModel_1 = __importDefault(require("../model/todoModel"));
 const enums_1 = require("../utils/enums");
 const createTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { title } = req.body;
-        const createTask = yield todoModel_1.default.create({ title });
+        const { title, desc, priority, dueDate, date } = req.body;
+        const createTask = yield todoModel_1.default.create({
+            title,
+            desc,
+            priority,
+            dueDate,
+            date,
+        });
         return res.status(enums_1.http.Created).json({
             message: "todo task created successfully",
             data: createTask,
@@ -143,17 +149,3 @@ const getAllCombine = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.getAllCombine = getAllCombine;
-// const todoModel = new Schema<iPropsData>(
-//   {
-//     todo: {
-//       type: [],
-//     },
-//     progress: {
-//       type: [],
-//     },
-//     done: {
-//       type: [],
-//     },
-//   },
-//   { timestamps: true }
-// );
