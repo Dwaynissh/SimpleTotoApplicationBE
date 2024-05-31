@@ -16,7 +16,7 @@ const app: Application = express();
 const port = process.env.PORT!;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", process.env.APP_URL!);
+  res.header("Access-Control-Allow-Origin", process.env.APP_URL_ONLINE!);
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
