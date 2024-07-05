@@ -28,6 +28,32 @@ export const createTodo = async (req: Request, res: Response) => {
   }
 };
 
+export const editTodo = async (req: Request, res: Response) => {
+  try {
+    const { ID } = req.params;
+    const { title, desc, priority, dueDate, date } = req.body;
+
+    const editedTasked = await todoModel.findByIdAndUpdate(ID, {
+      title,
+      desc,
+      priority,
+      dueDate,
+      date,
+    });
+
+    return res.status(http.Created).json({
+      message: "todo task edited successfully",
+      data: editedTasked,
+    });
+  } catch (error) {
+    return res.status(http.Bad_Request).json({
+      message: "error editing todo task",
+      status: http.Bad_Request,
+      data: error,
+    });
+  }
+};
+
 export const deleteTodo = async (req: Request, res: Response) => {
   try {
     const { ID } = req.params;
