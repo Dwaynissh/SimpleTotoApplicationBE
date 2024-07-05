@@ -8,7 +8,7 @@ import { mainApp } from "./mainApp";
 
 const mongoDBStore = mongoDB(session);
 const store = new mongoDBStore({
-  uri: process.env.MONGO_DB_URL!,
+  uri: process.env.MONGO_DB_URL_ONLINE!,
   collection: "sessions",
 });
 
@@ -16,14 +16,14 @@ const app: Application = express();
 const port = process.env.PORT!;
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", process.env.APP_URL!);
+  res.header("Access-Control-Allow-Origin", process.env.APP_URL_ONLINE!);
   res.header("Access-Control-Allow-Credentials", "true");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
 
-app.use(cors({ origin: process.env.APP_URL! }));
+app.use(cors({ origin: process.env.APP_URL_ONLINE! }));
 app.use(express.json());
 
 app.use(
